@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#  rename.sh
+#  
+#
+#  Created by Andrea Byrne on 4/9/14.
+#
+#!/bin/bash
+
+ls | while read -r FILE
+do
+mv -v "$FILE" `echo $FILE | tr ' ' '_' | tr -d '[{}(),\!]' | tr -d "\'" | tr '[A-Z]' '[a-z]' | sed 's/_-_/_/g'`
+done

@@ -1,0 +1,103 @@
+<html>
+	<head>
+	</head>
+ 	<body onload = "draw();">
+ 		<canvas id = "canvas" ></canvas>
+	</body>	
+	<script type="application/javascript">
+		var canvasDOM = document.getElementById("canvas");
+		canvasDOM.setAttribute("width",""+window.innerWidth);
+		canvasDOM.setAttribute("height",""+window.innerHeight);
+
+	
+
+			<!--
+				var pointsize = prompt("Click all over the page to make some triangles. But first tell me how big you'd like the points of the triangle to be. Enter a number between 1-10");
+			//-->
+		function draw(){
+			
+			var colors = ["#00008B","#DC143C","#FFFF00"];
+			var i = 0;
+			var points = [];
+			
+
+
+			
+
+			
+			var canvas = document.getElementById("canvas");	
+			var ctx = canvas.getContext("2d");
+			function clickfunction(event){
+				var staticPoint = markpt(event);
+				 
+				
+				points.push(staticPoint);
+				//console.log(points);
+				var staticColor = colors[i];
+					drawpt(staticColor,staticPoint[0],staticPoint[1],ctx,pointsize);
+				i++
+				if (i > 2){
+					canvas.removeEventListener('click',clickfunction)
+						draw()
+						if (canvas.getContext){
+				
+			
+				var curPoint = midpoint(points[0][0], points[1][0], points[0][1], points[1][1]); 
+				drawpt(staticColor,curPoint[0],curPoint[1],ctx,pointsize/2);
+				function infinate(){
+					var ans = randstatic();
+					var randPoint = points[ans];
+					var spotColor =  colors[ans];
+					console.log(randPoint);
+					console.log(curPoint);
+					curPoint = midpoint(randPoint[0], curPoint[0], randPoint[1], curPoint[1]);
+					console.log(curPoint);
+					drawpt(spotColor,curPoint[0],curPoint[1],ctx,pointsize/2);}
+				setInterval(infinate,10)
+				
+					
+			
+			
+
+
+			}
+			}	
+			}		
+                 
+			canvas.addEventListener('click', clickfunction);
+			
+
+		
+
+		function markpt(event){
+
+			return [event.clientX,event.clientY];
+				 
+
+		}		
+
+	 	function drawpt(color,x,y,ctx,size){
+
+	 		ctx.fillStyle = color;
+	 		ctx.fillRect(x,y,size,size);
+	 			
+	 	}
+	 	
+	 	function randstatic(){
+	 		var ans = Math.floor(Math.random()*3);
+	 			console.log(ans)
+	 			return ans
+
+	 	}
+	 	function midpoint(a,b,c,d){
+	 		var x = (a - b) / 2 + b
+	 		var y = (c - d) / 2 + d
+	 		var curPoint = [x,y]
+	 		return curPoint
+	 		
+
+	 	
+	 	}
+	 	}
+ 	</script>
+</html>
