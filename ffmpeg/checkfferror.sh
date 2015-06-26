@@ -2,7 +2,7 @@
 
 probe () {
 	
-	( FFREPORT=file=error.log:level=24 ffprobe -loglevel warning -show_streams -show_format -of flat -i "$file" ; echo "status=$?")
+	( FFREPORT=file=error.log:level=24 ffprobe -loglevel warning -show_streams -show_format -of flat -i "$file")
 
 }
 
@@ -11,13 +11,18 @@ probe () {
 check_lines (){
 	lines="$(wc -l  < error.log)"
 }
+
+bad () {
+  echo "$1" >> dodgyfiles.txt
+
+}
 for file in *.*; do
 
        probe
        check_lines
        a=2
        if [ $lines -gt $a ] ; then 
-	echo "GREATER THAN TWO"
+	      bad "$file has errors or warnings. Check errors.txt for specifics"
         less error.log >> errors.txt 
        fi 		 	
 
