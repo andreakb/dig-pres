@@ -1,0 +1,1 @@
+/home/andrea/bin/sql_querry.sh

@@ -1,0 +1,1 @@
+/home/andrea/bin/splittifs.sh
