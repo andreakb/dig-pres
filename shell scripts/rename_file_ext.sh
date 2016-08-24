@@ -1,0 +1,1 @@
+/home/andrea/bin/rename_file_ext.sh
