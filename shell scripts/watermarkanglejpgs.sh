@@ -3,7 +3,7 @@
 WATERMARK='Sourced from Archives New Zealand - For research purposes only'
 FONTSIZE=100
 BACKGROUND='#0000'
-COLOR='#0003'
+COLOR='#0002'
 
 
 for TIF in *.tif;

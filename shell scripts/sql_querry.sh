@@ -3,7 +3,7 @@
 #command requires sql_querry.sh <input> prints to STDOUT
 
 #create a temp file to get rid of new lines
-tr -d '\015' < $1 > noreturnstemp
+tr -d '\015' < "$1" > noreturnstemp
 
 while read NUMBER
 do
