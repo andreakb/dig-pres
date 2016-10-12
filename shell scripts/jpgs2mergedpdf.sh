@@ -2,7 +2,9 @@
 # create a merged pdf from jpgs using imagemagcik and ghostscript
 
 #Directory name prefix to get rid of to name output pdf
-OLDPREFIX='.\/Batch__'
+OLDPREFIX='.\/'
+OLDSUFFIX='\/DC'
+
 
 #recurse through directories
 
@@ -33,11 +35,11 @@ j=`find $DIR -maxdepth 1 -name '*.jpg' | wc -l`
 #merge pdfs into a single file using ghostscript
 
 k=`ls -1 "$DIR"/tmp |wc -l`
-OUTPUT_FILE=`echo "$DIR" | sed -e "s/^${OLDPREFIX}//"`
+OUTPUT_FILE=`echo "$DIR" | sed -e "s/^${OLDPREFIX}//;s/${OLDSUFFIX}//"`
 if [ $k -gt 0 ] ; then
 	
 	 
-	echo "$DIR"/tmp
+	
 	gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$DIR/$OUTPUT_FILE".pdf "$DIR"/tmp/*.pdf
  	
 fi
